@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_162744) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_163107) do
   create_table "affiliate_links", force: :cascade do |t|
     t.integer "product_id"
     t.string "destination_url"
@@ -61,6 +61,25 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_162744) do
     t.index ["supplier_id"], name: "index_inventories_on_supplier_id"
   end
 
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "product_id"
+    t.integer "quantity"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "customer_email"
+    t.string "status"
+    t.decimal "total_amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_email"], name: "index_orders_on_customer_email"
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "category_id", null: false
@@ -96,6 +115,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_162744) do
 
   add_foreign_key "article_products", "articles"
   add_foreign_key "article_products", "products"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
 end
