@@ -1,0 +1,16 @@
+<!-- Basic Open Graph Meta Tags -->
+<meta property="og:title" content="<%= content_for?(:meta_title) ? yield(:meta_title) : 'Affiliate Platform - Passive Income with Affiliate Marketing & Dropshipping' %>
+<meta property="og:description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Turn your passion into passive income with our all-in-one affiliate marketing and dropshipping platform.' %>
+<meta property="og:type" content="website">
+<meta property="og:url" content="<%= request.original_url %>
+<meta property="og:image" content="<%= image_tag 'og-image.svg'%>
+<meta property="og:site_name" content="Affiliate Platform">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<%= content_for?(:meta_title) ? yield(:meta_title) : 'Affiliate Platform - Passive Income with Affiliate Marketing & Dropshipping' %>
+<meta name="twitter:description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : 'Turn your passion into passive income with our all-in-one affiliate marketing and dropshipping platform.' %>
+<meta name="twitter:image" content="<%= image_tag 'twitter-card.svg' %>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="<%= request.original_url %>
