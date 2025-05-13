@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_160451) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_162744) do
   create_table "affiliate_links", force: :cascade do |t|
     t.integer "product_id"
     t.string "destination_url"
@@ -50,6 +50,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_160451) do
     t.index ["slug"], name: "index_categories_on_slug", unique: true
   end
 
+  create_table "inventories", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "quantity"
+    t.string "sku"
+    t.integer "supplier_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_inventories_on_product_id"
+    t.index ["supplier_id"], name: "index_inventories_on_supplier_id"
+  end
+
   create_table "product_categories", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "category_id", null: false
@@ -70,7 +81,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_160451) do
     t.datetime "updated_at", null: false
     t.string "external_url"
     t.decimal "commission_rate"
+    t.decimal "supplier_cost"
+    t.decimal "shipping_cost"
     t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "api_key"
+    t.string "api_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "article_products", "articles"
