@@ -10,5 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 0) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_155825) do
+  create_table "affiliate_links", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "destination_url"
+    t.string "tracking_code"
+    t.string "program_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_affiliate_links_on_product_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "product_categories", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["product_id"], name: "index_product_categories_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "description"
+    t.string "slug"
+    t.string "product_type"
+    t.string "sku"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "external_url"
+    t.decimal "commission_rate"
+    t.index ["slug"], name: "index_products_on_slug", unique: true
+  end
+
+  add_foreign_key "product_categories", "categories"
+  add_foreign_key "product_categories", "products"
 end
