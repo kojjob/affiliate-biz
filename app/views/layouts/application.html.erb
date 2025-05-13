@@ -8,6 +8,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- SEO -->
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : "Discover the best products with honest reviews" %>">
+    <%# <%= render "shared/social_meta_tags" %> 
+    
+
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
@@ -22,9 +27,15 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="bg-gray-50 min-h-screen">
+    <%= render "shared/header" %>
+
+
+    <main class="container mx-auto px-4 py-8">
       <%= yield %>
     </main>
+
+
+    <%= render "shared/footer" %>
   </body>
 </html>

@@ -1,0 +1,19 @@
+<div class="mb-8">
+  <h1 class="text-3xl font-bold text-gray-900">Reviews & Guides</h1>
+  <p class="text-lg text-gray-600">In-depth analysis and honest opinions</p>
+</div>
+
+<div class="space-y-8">
+  <% @articles.each do |article| %>
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-2xl font-bold text-gray-800">
+        <%= link_to article.title, article_path(article.slug), class: "hover:text-blue-600" %>
+      </h2>
+      <p class="text-gray-600 mt-3"><%= article.meta_description %></p>
+      <div class="mt-4">
+        <%= link_to "Read More", article_path(article.slug), 
+                    class: "text-blue-600 font-medium hover:underline" %>
+      </div>
+    </div>
+  <% end %>
+</div>
