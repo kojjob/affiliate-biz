@@ -1,0 +1,283 @@
+<div class="landing-page">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    <div class="container mx-auto px-4 py-20 flex flex-col lg:flex-row items-center">
+      <div class="lg:w-1/2 lg:pr-10 mb-10 lg:mb-0">
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">
+          Turn Your Passion Into Passive Income
+        </h1>
+        <p class="text-xl mb-8 text-blue-100">
+          Build a profitable online business with our all-in-one affiliate marketing and dropshipping platform.
+        </p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="/products" class="inline-block bg-white text-blue-700 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300">
+            Browse Products
+          </a>
+          <a href="/articles" class="inline-block bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white hover:text-blue-700 transition duration-300">
+            Read Reviews
+          </a>
+        </div>
+      </div>
+      <div class="lg:w-1/2 flex justify-center lg:justify-end">
+        <%= image_tag 'hero-image.jpg', 
+            alt: 'Passive income illustration', 
+            class: 'rounded-lg shadow-2xl',
+            onerror: "this.onerror=null; this.src='/api/placeholder/600/400'; this.alt='Passive income illustration'" %>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Features Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Why Choose Our Platform</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to build a successful online business with multiple revenue streams.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-gray-50 rounded-xl p-8 transition-all hover:shadow-lg">
+          <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Dual Income Streams</h3>
+          <p class="text-gray-600">Combine affiliate marketing with dropshipping to maximize your earning potential and diversify your revenue.</p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-gray-50 rounded-xl p-8 transition-all hover:shadow-lg">
+          <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">SEO Optimized</h3>
+          <p class="text-gray-600">Our platform is built for search engine visibility, helping you attract organic traffic without expensive ads.</p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-gray-50 rounded-xl p-8 transition-all hover:shadow-lg">
+          <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">No Coding Required</h3>
+          <p class="text-gray-600">Easy-to-use interface lets you manage products, content, and orders without technical expertise.</p>
+        </div>
+        
+        <!-- Feature 4 -->
+        <div class="bg-gray-50 rounded-xl p-8 transition-all hover:shadow-lg">
+          <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Content Marketing Tools</h3>
+          <p class="text-gray-600">Built-in blog platform with SEO tools to create engaging content that converts visitors into customers.</p>
+        </div>
+        
+        <!-- Feature 5 -->
+        <div class="bg-gray-50 rounded-xl p-8 transition-all hover:shadow-lg">
+          <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Analytics Dashboard</h3>
+          <p class="text-gray-600">Comprehensive analytics to track performance, monitor sales, and optimize your marketing strategy.</p>
+        </div>
+        
+        <!-- Feature 6 -->
+        <div class="bg-gray-50 rounded-xl p-8 transition-all hover:shadow-lg">
+          <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Automated Payments</h3>
+          <p class="text-gray-600">Seamless payment processing and commission tracking for both affiliate and dropshipping sales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- How It Works Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How It Works</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Start earning passive income in just a few simple steps.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="relative">
+          <div class="absolute -left-4 md:left-auto md:-top-4 w-12 h-12 rounded-full bg-blue-600 text-white text-xl font-bold flex items-center justify-center z-10">1</div>
+          <div class="bg-white rounded-xl p-8 pt-12 md:pt-8 md:pl-12 shadow-lg h-full">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Choose Your Niche</h3>
+            <p class="text-gray-600">Select a profitable market segment that aligns with your interests and has good earning potential.</p>
+          </div>
+        </div>
+        
+        <!-- Step 2 -->
+        <div class="relative mt-10 md:mt-0">
+          <div class="absolute -left-4 md:left-auto md:-top-4 w-12 h-12 rounded-full bg-blue-600 text-white text-xl font-bold flex items-center justify-center z-10">2</div>
+          <div class="bg-white rounded-xl p-8 pt-12 md:pt-8 md:pl-12 shadow-lg h-full">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Create Content</h3>
+            <p class="text-gray-600">Publish engaging reviews and articles that attract visitors and build trust with your audience.</p>
+          </div>
+        </div>
+        
+        <!-- Step 3 -->
+        <div class="relative mt-10 md:mt-0">
+          <div class="absolute -left-4 md:left-auto md:-top-4 w-12 h-12 rounded-full bg-blue-600 text-white text-xl font-bold flex items-center justify-center z-10">3</div>
+          <div class="bg-white rounded-xl p-8 pt-12 md:pt-8 md:pl-12 shadow-lg h-full">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">Generate Revenue</h3>
+            <p class="text-gray-600">Earn commissions from affiliate links and profit margins from dropshipped products.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Join hundreds of entrepreneurs who have built profitable online businesses.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-gray-50 rounded-xl p-8 shadow">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">"This platform transformed my side hustle into a full-time business. I started with just affiliate reviews and now run a successful dropshipping operation with minimal effort."</p>
+          <div class="flex items-center">
+            <%= image_tag 'testimonial-1.png', 
+                alt: 'Sarah J.',
+                class: 'w-12 h-12 rounded-full mr-4',
+                onerror: "this.onerror=null; this.src='/api/placeholder/100/100'; this.alt='Sarah J.'" %>
+            <div>
+              <h4 class="font-bold text-gray-900">Sarah J.</h4>
+              <p class="text-gray-600 text-sm">Tech Gadget Reviewer</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="bg-gray-50 rounded-xl p-8 shadow">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">"The SEO tools helped me rank on the first page of Google for competitive keywords in my niche. My organic traffic has increased by 430% in just 6 months."</p>
+          <div class="flex items-center">
+            <%= image_tag 'testimonial-1.png', 
+                alt: 'Michael R.',
+                class: 'w-12 h-12 rounded-full mr-4',
+                onerror: "this.onerror=null; this.src='/api/placeholder/100/100'; this.alt='Micheal R.'" %>
+            <div>
+              <h4 class="font-bold text-gray-900">Michael R.</h4>
+              <p class="text-gray-600 text-sm">Home Improvement Blogger</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="bg-gray-50 rounded-xl p-8 shadow">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+            </div>
+          </div>
+          <p class="text-gray-600 mb-6">"I was able to build a $5,000/month passive income stream within a year while keeping my full-time job. The automation tools are a game-changer."</p>
+          <div class="flex items-center">
+            <%= image_tag 'testimonial-1.png', 
+                alt: 'Sarah J.',
+                class: 'w-12 h-12 rounded-full mr-4',
+                onerror: "this.onerror=null; this.src='/api/placeholder/100/100'; this.alt='Sarah J.'" %>
+            <div>
+              <h4 class="font-bold text-gray-900">Jennifer L.</h4>
+              <p class="text-gray-600 text-sm">Fitness Product Entrepreneur</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">Everything you need to know about our platform.</p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">How much does it cost to get started?</h3>
+          <p class="text-gray-600">Our platform offers flexible pricing options starting at just $19/month for the basic plan. All plans include our core features with higher tiers offering advanced analytics and automation tools.</p>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Do I need technical skills to use the platform?</h3>
+          <p class="text-gray-600">No technical skills required! Our platform is designed for entrepreneurs of all skill levels. The intuitive interface makes it easy to manage products, content, and orders without any coding knowledge.</p>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">How long until I start seeing results?</h3>
+          <p class="text-gray-600">Most users start seeing initial sales within 30-60 days. Building significant traffic and revenue typically takes 6-12 months of consistent effort, depending on your niche and content strategy.</p>
+        </div>
+        
+        <div class="mb-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Which affiliate programs can I promote?</h3>
+          <p class="text-gray-600">Our platform integrates with all major affiliate networks including Amazon Associates, ShareASale, CJ Affiliate, Rakuten, and many more. You can also manually add custom affiliate links from any program.</p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">How does the dropshipping integration work?</h3>
+          <p class="text-gray-600">We provide seamless integration with major suppliers and marketplaces. You can import products, sync inventory, and fulfill orders automatically. The platform handles all the technical aspects of dropshipping for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Passive Income Journey?</h2>
+      <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-10">Join thousands of entrepreneurs who are building profitable online businesses with our platform.</p>
+      <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <a href="/register" class="inline-block bg-white text-blue-700 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-blue-50 transition duration-300">
+          Start Free Trial
+        </a>
+        <a href="/demo" class="inline-block bg-transparent border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white hover:text-blue-700 transition duration-300">
+          Request Demo
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
