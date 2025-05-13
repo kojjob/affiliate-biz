@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "home/index"
   root "home#index"
 
@@ -7,6 +8,19 @@ Rails.application.routes.draw do
   resources :categories, only: [ :index, :show ]
 
   namespace :admin do
+    get "articles/index"
+    get "articles/new"
+    get "articles/create"
+    get "articles/edit"
+    get "articles/update"
+    get "articles/destroy"
+    get "products/index"
+    get "products/new"
+    get "products/create"
+    get "products/edit"
+    get "products/update"
+    get "products/destroy"
+    get "dashboard/index"
     resources :products
     resources :articles
     resources :categories

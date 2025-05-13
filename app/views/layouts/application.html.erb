@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || "Affiliate Biz" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -10,7 +10,7 @@
 
     <!-- SEO -->
     <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : "Discover the best products with honest reviews" %>">
-    <%# <%= render "shared/social_meta_tags" %> 
+    <%= render "shared/social_meta_tags" %> 
     
 
     <%= yield :head %>
@@ -22,7 +22,6 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
@@ -30,11 +29,9 @@
   <body class="bg-gray-50 min-h-screen">
     <%= render "shared/header" %>
 
-
     <main class="">
       <%= yield %>
     </main>
-
 
     <%= render "shared/footer" %>
   </body>
