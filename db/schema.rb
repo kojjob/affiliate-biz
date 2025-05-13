@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_155825) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_160451) do
   create_table "affiliate_links", force: :cascade do |t|
     t.integer "product_id"
     t.string "destination_url"
@@ -19,6 +19,27 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_155825) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_affiliate_links_on_product_id"
+  end
+
+  create_table "article_products", force: :cascade do |t|
+    t.integer "article_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_article_products_on_article_id"
+    t.index ["product_id"], name: "index_article_products_on_product_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "slug"
+    t.string "meta_title"
+    t.string "meta_description"
+    t.boolean "published"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -52,6 +73,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_155825) do
     t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 
+  add_foreign_key "article_products", "articles"
+  add_foreign_key "article_products", "products"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
 end
