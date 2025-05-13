@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- Company info -->
       <div>
-        <h3 class="text-lg font-semibold mb-4">YourBrandName</h3>
+        <h3 class="text-lg font-semibold mb-4">Affiliate Biz</h3>
         <p class="text-gray-400">
           Honest product reviews and recommendations to help you make informed decisions.
         </p>
@@ -21,23 +21,29 @@
       </div>
       
       <!-- Newsletter signup -->
-      <div>
-        <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
-        <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest reviews and deals.</p>
-        <form class="flex">
-          <input type="email" placeholder="Your email address" 
-                 class="px-4 py-2 w-full text-gray-900 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <button type="submit" 
-                  class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r text-white font-medium">
-            Subscribe
-          </button>
-        </form>
-      </div>
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Stay Updated</h3>
+            <p class="text-gray-400 mb-4">Subscribe to our newsletter for the latest reviews and deals.</p>
+            <form class="flex" action="/newsletter/subscribe" method="post">
+                <%= csrf_meta_tags %>
+                <input type="email" 
+                    id="newsletter_email" 
+                    name="email" 
+                    placeholder="Your email address" 
+                    required
+                    autocomplete="email"
+                    class="px-4 py-2 w-full text-gray-300 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" 
+                        class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r text-white font-medium">
+                Subscribe
+                </button>
+            </form>
+        </div>
     </div>
     
     <!-- Copyright -->
     <div class="mt-8 pt-6 border-t border-gray-700 text-gray-400 text-center">
-      <p>© <%= Date.today.year %> YourBrandName. All rights reserved.</p>
+      <p>© <%= Date.today.year %> Affiliate Biz. All rights reserved.</p>
       <p class="mt-2 text-sm">
         <span>This site may contain affiliate links. We may earn a commission when you purchase through these links.</span>
       </p>

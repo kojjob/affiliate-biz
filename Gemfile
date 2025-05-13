@@ -64,9 +64,9 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem "rspec-rails", "~> 8.0", groups: [:development, :test]
-gem "factory_bot_rails", "~> 6.4", groups: [:development, :test]
-gem "faker", "~> 3.5", groups: [:development, :test]
+gem "rspec-rails", "~> 8.0", groups: [ :development, :test ]
+gem "factory_bot_rails", "~> 6.4", groups: [ :development, :test ]
+gem "faker", "~> 3.5", groups: [ :development, :test ]
 
 gem "view_component", "~> 3.21"
 gem "jsonapi-serializer", "~> 2.2"
