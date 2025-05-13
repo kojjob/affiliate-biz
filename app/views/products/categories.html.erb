@@ -1,0 +1,96 @@
+<div class="categories-page">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">Product Categories</h1>
+    <p class="mt-2 text-lg text-gray-600">Browse our extensive collection of products by category</p>
+  </div>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% categories = [
+      { name: "Electronics", count: 42, icon: "computer-desktop" },
+      { name: "Home & Kitchen", count: 67, icon: "home" },
+      { name: "Fashion", count: 53, icon: "shopping-bag" },
+      { name: "Beauty & Personal Care", count: 39, icon: "sparkles" },
+      { name: "Sports & Outdoors", count: 28, icon: "globe-alt" },
+      { name: "Toys & Games", count: 31, icon: "puzzle-piece" },
+      { name: "Books & Media", count: 45, icon: "book-open" },
+      { name: "Health & Wellness", count: 34, icon: "heart" },
+      { name: "Automotive", count: 22, icon: "truck" }
+    ] %>
+    
+    <% categories.each do |category| %>
+      <a href="#" class="group">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 h-full flex flex-col">
+          <div class="p-6">
+            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-200">
+              <!-- SVG icon will vary based on category -->
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <% case category[:icon] %>
+                <% when "computer-desktop" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                <% when "home" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                <% when "shopping-bag" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                <% when "sparkles" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                <% when "globe-alt" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                <% when "puzzle-piece" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                <% when "book-open" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                <% when "heart" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                <% when "truck" %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                <% else %>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                <% end %>
+              </svg>
+            </div>
+            
+            <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors"><%= category[:name] %></h2>
+            <p class="text-gray-600 mb-4"><%= category[:count] %> products</p>
+            
+            <div class="mt-auto pt-4 flex items-center text-blue-600 font-medium">
+              Browse Category
+              <svg class="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
+  
+  <!-- Featured Category Banner -->
+  <div class="mt-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl overflow-hidden shadow-xl">
+    <div class="relative">
+      <div class="absolute inset-0 opacity-20">
+        <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+              <path d="M 0 10 L 100 10 M 10 0 L 10 100" stroke="white" stroke-width="1" fill="none"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)"/>
+        </svg>
+      </div>
+      <div class="relative max-w-5xl mx-auto py-12 px-6 md:px-12 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4">Summer Collection</h2>
+          <p class="text-lg text-blue-100 mb-6">Discover our specially curated summer collection featuring the season's hottest products at unbeatable prices.</p>
+          <a href="#" class="inline-block bg-white text-blue-700 font-bold px-6 py-3 rounded-lg hover:bg-blue-50 transition duration-200">
+            Explore Collection
+          </a>
+        </div>
+        <div class="md:w-1/2">
+          <img src="<%= asset_path('summer-collection.jpg') %>" alt="Summer Collection" class="rounded-lg shadow-xl" 
+              onerror="this.onerror=null; this.src='/api/placeholder/600/400?text=Summer+Collection'; this.alt='Summer Collection';">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

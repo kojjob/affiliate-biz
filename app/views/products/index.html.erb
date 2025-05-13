@@ -1,14 +1,239 @@
-<div class="mb-8">
-  <h1 class="text-3xl font-bold text-gray-900">Featured Products</h1>
-  <p class="text-lg text-gray-600">Discover the best products with honest reviews</p>
-</div>
+<!-- app/views/products/index.html.erb -->
+<div class="products-index">
+  <!-- Hero Banner -->
+  <div class="relative bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl overflow-hidden shadow-xl mb-12">
+    <div class="absolute inset-0 opacity-20">
+      <svg width="100%" height="100%" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path d="M 0 10 L 100 10 M 10 0 L 10 100" stroke="white" stroke-width="1" fill="none"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)"/>
+      </svg>
+    </div>
+    <div class="relative max-w-5xl mx-auto py-12 px-6 md:px-12 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 mb-8 md:mb-0 md:pr-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight">Discover Top-Rated Products</h1>
+        <p class="mt-4 text-lg text-blue-100">Curated selections with honest reviews to help you make the best choice.</p>
+      </div>
+      <div class="md:w-1/2">
+        <!-- Search and Filter -->
+        <div class="bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-xl p-4 border border-white border-opacity-20">
+          <form class="flex flex-col space-y-4">
+            <div>
+              <label for="search" class="block text-sm font-medium text-white">Search Products</label>
+              <div class="mt-1 relative rounded-md shadow-sm">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-5 w-5 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+                <input type="search" name="search" id="search" class="block w-full pl-10 pr-3 py-2 border-0 rounded-md focus:ring-2 focus:ring-white focus:ring-opacity-50 bg-white bg-opacity-10 text-white placeholder-blue-200" placeholder="What are you looking for?">
+              </div>
+            </div>
+            <div class="flex space-x-3">
+              <div class="w-2/3">
+                <label for="category" class="block text-sm font-medium text-white">Category</label>
+                <select id="category" name="category" class="mt-1 block w-full pl-3 pr-10 py-2 text-white border-0 rounded-md focus:ring-2 focus:ring-white focus:ring-opacity-50 bg-white bg-opacity-10">
+                  <option value="">All Categories</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="home">Home & Kitchen</option>
+                  <option value="fashion">Fashion</option>
+                  <option value="beauty">Beauty & Personal Care</option>
+                </select>
+              </div>
+              <div class="w-1/3">
+                <label for="sort" class="block text-sm font-medium text-white">Sort By</label>
+                <select id="sort" name="sort" class="mt-1 block w-full pl-3 pr-10 py-2 text-white border-0 rounded-md focus:ring-2 focus:ring-white focus:ring-opacity-50 bg-white bg-opacity-10">
+                  <option value="popular">Popular</option>
+                  <option value="newest">Newest</option>
+                  <option value="price_low">Price: Low to High</option>
+                  <option value="price_high">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
+            <button type="submit" class="w-full bg-white text-blue-700 font-medium py-2 px-4 rounded-md hover:bg-blue-50 transition duration-150">Apply Filters</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-  <% @products.each do |product| %>
-    <%= render ProductCardComponent.new(product: product) %>
-  <% end %>
-</div>
+  <!-- Category Quick Filters -->
+  <div class="flex flex-wrap gap-2 mb-8 mx-auto container">
+    <a href="#" class="flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition">
+      <span class="mr-2">All</span>
+      <span class="text-xs bg-blue-800 text-white rounded-full w-5 h-5 flex items-center justify-center"><%= @products.count %></span>
+    </a>
+    <a href="#" class="flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200 transition">
+      <span class="mr-2">Electronics</span>
+      <span class="text-xs bg-gray-800 text-white rounded-full w-5 h-5 flex items-center justify-center">12</span>
+    </a>
+    <a href="#" class="flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200 transition">
+      <span class="mr-2">Home & Kitchen</span>
+      <span class="text-xs bg-gray-800 text-white rounded-full w-5 h-5 flex items-center justify-center">24</span>
+    </a>
+    <a href="#" class="flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200 transition">
+      <span class="mr-2">Fashion</span>
+      <span class="text-xs bg-gray-800 text-white rounded-full w-5 h-5 flex items-center justify-center">18</span>
+    </a>
+    <a href="#" class="flex items-center px-4 py-2 bg-gray-100 text-gray-800 rounded-full hover:bg-gray-200 transition">
+      <span class="mr-2">Beauty</span>
+      <span class="text-xs bg-gray-800 text-white rounded-full w-5 h-5 flex items-center justify-center">15</span>
+    </a>
+  </div>
 
-<div class="mt-8">
-  <%= paginate @products %>
+  <!-- Products Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+    <% @products.each do |product| %>
+      <div class="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+        <!-- Product Image -->
+        <div class="relative">
+          <!-- Placeholder for product image -->
+          <div class="aspect-w-4 aspect-h-3 bg-gray-200 group-hover:opacity-90 transition-opacity">
+            <img src="<%= asset_path('product-placeholder.jpg') %>" alt="<%= product.name %>" class="w-full h-full object-cover" 
+                 onerror="this.onerror=null; this.src='/api/placeholder/400/300'; this.alt='<%= product.name %>';">
+          </div>
+          
+          <!-- Product Badge - show based on condition -->
+          <% if rand > 0.7 %>
+            <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE</div>
+          <% elsif rand > 0.4 %>
+            <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+          <% elsif rand > 0.1 %>
+            <div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">TOP RATED</div>
+          <% end %>
+
+          <!-- Quick View Button -->
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <button class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-blue-700 font-medium px-4 py-2 rounded-md hover:bg-opacity-100 transition">
+              Quick View
+            </button>
+          </div>
+        </div>
+        
+        <!-- Product Content -->
+        <div class="flex-grow p-5 flex flex-col">
+          <!-- Rating -->
+          <div class="flex items-center mb-2">
+            <div class="flex text-yellow-400">
+              <% rating = rand(3.0..5.0).round(1) %>
+              <% full_stars = rating.floor %>
+              <% half_star = (rating - full_stars) >= 0.5 %>
+              
+              <% full_stars.times do %>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              <% end %>
+              
+              <% if half_star %>
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#halfStar)"/>
+                  <defs>
+                    <linearGradient id="halfStar">
+                      <stop offset="50%" stop-color="currentColor"/>
+                      <stop offset="50%" stop-color="#CBD5E1"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              <% end %>
+              
+              <% (5 - full_stars - (half_star ? 1 : 0)).times do %>
+                <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              <% end %>
+            </div>
+            <span class="ml-2 text-xs text-gray-500"><%= rand(10..500) %> reviews</span>
+          </div>
+          
+          <!-- Category -->
+          <div class="text-xs text-gray-500 mb-1">
+            <%= ['Electronics', 'Home & Kitchen', 'Fashion', 'Beauty & Personal Care'].sample %>
+          </div>
+          
+          <!-- Title -->
+          <h3 class="font-semibold text-gray-900 mb-1 hover:text-blue-600 transition-colors">
+            <%= link_to product.name, product_path(product.slug) %>
+          </h3>
+          
+          <!-- Description -->
+          <p class="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+            <%= product.description %>
+          </p>
+          
+          <!-- Price & CTA -->
+          <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+            <div>
+              <% if rand > 0.3 %>
+                <span class="text-sm text-gray-500 line-through">$<%= (product.price.to_f * 1.2).round(2) %></span>
+                <span class="ml-1 text-lg font-bold text-gray-900">$<%= product.price %></span>
+              <% else %>
+                <span class="text-lg font-bold text-gray-900">$<%= product.price %></span>
+              <% end %>
+            </div>
+            
+            <div class="flex space-x-2">
+              <% if product.is_a?(Product::AffiliateItem) && product.affiliate_links.any? %>
+                <%= link_to affiliate_redirect_path(product.affiliate_links.first), 
+                      class: "text-blue-600 hover:text-blue-800 transition-colors",
+                      data: { turbo: false } do %>
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                <% end %>
+              <% end %>
+              <%= link_to product_path(product.slug), 
+                    class: "bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1.5 rounded transition-colors" do %>
+                View Details
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center">
+    <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+      <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+        <span class="sr-only">Previous</span>
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
+      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">1</a>
+      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-blue-50 text-sm font-medium text-blue-600 hover:bg-blue-50">2</a>
+      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">3</a>
+      <span class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700">...</span>
+      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">8</a>
+      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">9</a>
+      <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">10</a>
+      <a href="#" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+        <span class="sr-only">Next</span>
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Newsletter -->
+  <div class="mt-16 bg-gray-100 rounded-2xl p-8 md:p-12">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Stay Updated with New Products</h2>
+      <p class="text-gray-600 mb-6">Subscribe to our newsletter to receive updates on new product releases, exclusive deals, and helpful buying guides.</p>
+      <form class="flex flex-col sm:flex-row max-w-md mx-auto">
+        <input type="email" id="newsletter_email" name="email" placeholder="Your email address" required
+               class="px-4 py-3 w-full rounded-lg sm:rounded-r-none mb-3 sm:mb-0 border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+        <button type="submit" 
+                class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg sm:rounded-l-none transition duration-150">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,106 @@
+<div class="group bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col h-full">
+  <!-- Product Image -->
+  <div class="relative">
+    <!-- Product Image -->
+    <div class="aspect-w-4 aspect-h-3 bg-gray-200 group-hover:opacity-90 transition-opacity">
+      <img src="<%= asset_path('product-placeholder.jpg') %>" alt="<%= product.name %>" class="w-full h-full object-cover" 
+           onerror="this.onerror=null; this.src='/api/placeholder/400/300'; this.alt='<%= product.name %>';">
+    </div>
+    
+    <!-- Product Badge - show based on condition -->
+    <% if rand > 0.7 %>
+      <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">SALE</div>
+    <% elsif rand > 0.4 %>
+      <div class="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
+    <% elsif rand > 0.1 %>
+      <div class="absolute top-3 left-3 bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">TOP RATED</div>
+    <% end %>
+
+    <!-- Quick View Button -->
+    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+      <button class="bg-white bg-opacity-80 backdrop-filter backdrop-blur-sm text-blue-700 font-medium px-4 py-2 rounded-md hover:bg-opacity-100 transition">
+        Quick View
+      </button>
+    </div>
+  </div>
+  
+  <!-- Product Content -->
+  <div class="flex-grow p-5 flex flex-col">
+    <!-- Rating -->
+    <div class="flex items-center mb-2">
+      <div class="flex text-yellow-400">
+        <% rating = rand(3.0..5.0).round(1) %>
+        <% full_stars = rating.floor %>
+        <% half_star = (rating - full_stars) >= 0.5 %>
+        
+        <% full_stars.times do %>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+        <% end %>
+        
+        <% if half_star %>
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="url(#halfStar)"/>
+            <defs>
+              <linearGradient id="halfStar">
+                <stop offset="50%" stop-color="currentColor"/>
+                <stop offset="50%" stop-color="#CBD5E1"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        <% end %>
+        
+        <% (5 - full_stars - (half_star ? 1 : 0)).times do %>
+          <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+        <% end %>
+      </div>
+      <span class="ml-2 text-xs text-gray-500"><%= rand(10..500) %> reviews</span>
+    </div>
+    
+    <!-- Category -->
+    <div class="text-xs text-gray-500 mb-1">
+      <%= ['Electronics', 'Home & Kitchen', 'Fashion', 'Beauty & Personal Care'].sample %>
+    </div>
+    
+    <!-- Title -->
+    <h3 class="font-semibold text-gray-900 mb-1 hover:text-blue-600 transition-colors">
+      <%= link_to product.name, product_path(product.slug) %>
+    </h3>
+    
+    <!-- Description -->
+    <p class="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
+      <%= product.description %>
+    </p>
+    
+    <!-- Price & CTA -->
+    <div class="mt-auto pt-4 border-t border-gray-100 flex justify-between items-center">
+      <div>
+        <% if rand > 0.3 %>
+          <span class="text-sm text-gray-500 line-through">$<%= (product.price.to_f * 1.2).round(2) %></span>
+          <span class="ml-1 text-lg font-bold text-gray-900">$<%= product.price %></span>
+        <% else %>
+          <span class="text-lg font-bold text-gray-900">$<%= product.price %></span>
+        <% end %>
+      </div>
+      
+      <div class="flex space-x-2">
+        <% if product.is_a?(Product::AffiliateItem) && product.affiliate_links.any? %>
+          <%= link_to affiliate_redirect_path(product.affiliate_links.first), 
+                class: "text-blue-600 hover:text-blue-800 transition-colors",
+                data: { turbo: false } do %>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          <% end %>
+        <% end %>
+        <%= link_to product_path(product.slug), 
+              class: "bg-blue-600 hover:bg-blue-700 text-white text-sm px-3 py-1.5 rounded transition-colors" do %>
+          View Details
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
