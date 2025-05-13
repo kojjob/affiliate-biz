@@ -71,3 +71,5 @@ gem "faker", "~> 3.5", groups: [:development, :test]
 gem "view_component", "~> 3.21"
 gem "jsonapi-serializer", "~> 2.2"
 gem "aasm", "~> 5.5"
+
+gem "kaminari", "~> 1.2"
