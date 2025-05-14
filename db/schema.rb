@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_235845) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_14_184933) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -77,6 +77,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_235845) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "published_at"
+    t.boolean "featured"
+    t.integer "featured_position"
+    t.index ["featured"], name: "index_articles_on_featured"
+    t.index ["published_at"], name: "index_articles_on_published_at"
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
@@ -96,6 +101,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_235845) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["affiliate_link_id"], name: "index_clicks_on_affiliate_link_id"
+  end
+
+  create_table "content_articles", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "slug"
+    t.boolean "published", default: false
+    t.integer "author_id"
+    t.string "meta_title"
+    t.text "meta_description"
+    t.boolean "featured", default: false
+    t.string "featured_image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_content_articles_on_author_id"
+    t.index ["slug"], name: "index_content_articles_on_slug", unique: true
   end
 
   create_table "conversions", force: :cascade do |t|
@@ -160,6 +181,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_235845) do
     t.decimal "commission_rate"
     t.decimal "supplier_cost"
     t.decimal "shipping_cost"
+    t.boolean "featured"
+    t.integer "featured_position"
+    t.index ["featured"], name: "index_products_on_featured"
     t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 
@@ -191,6 +215,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_235845) do
   add_foreign_key "article_products", "articles"
   add_foreign_key "article_products", "products"
   add_foreign_key "clicks", "affiliate_links"
+  add_foreign_key "content_articles", "users", column: "author_id"
   add_foreign_key "conversions", "affiliate_links"
   add_foreign_key "conversions", "clicks"
   add_foreign_key "order_items", "orders"

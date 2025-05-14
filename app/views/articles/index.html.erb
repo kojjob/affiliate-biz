@@ -1,18 +1,147 @@
-<div class="mb-8">
-  <h1 class="text-3xl font-bold text-gray-900">Reviews & Guides</h1>
-  <p class="text-lg text-gray-600">In-depth analysis and honest opinions</p>
-</div>
+<% content_for :title, "Expert Reviews & Buying Guides" %>
+<% content_for :meta_description, "Discover in-depth reviews, comparison guides, and expert advice to help you make informed purchasing decisions." %>
 
-<div class="space-y-8">
-  <% @articles.each do |article| %>
-    <div class="bg-white rounded-lg shadow-md p-6">
-      <h2 class="text-2xl font-bold text-gray-800">
-        <%= link_to article.title, article_path(article.slug), class: "hover:text-blue-600" %>
-      </h2>
-      <p class="text-gray-600 mt-3"><%= article.meta_description %></p>
-      <div class="mt-4">
-        <%= link_to "Read More", article_path(article.slug), 
-                    class: "text-blue-600 font-medium hover:underline" %>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <header class="text-center mb-16">
+    <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
+      Expert Reviews & Buying Guides
+    </h1>
+    <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+      Discover in-depth reviews, comparison guides, and expert advice to help you make informed purchasing decisions.
+    </p>
+  </header>
+
+  <% if @featured_article.present? %>
+    <div class="mb-16">
+      <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+        <div class="md:flex">
+          <% if @featured_article.featured_image.attached? %>
+            <div class="md:flex-shrink-0 md:w-2/5">
+              <%= link_to article_path(@featured_article.slug) do %>
+                <%= image_tag @featured_article.featured_image.variant(resize_to_limit: [800, 600]), 
+                             class: "h-full w-full object-cover md:h-full md:w-full", 
+                             alt: @featured_article.title %>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="p-8 md:p-10 md:w-3/5">
+            <% if @featured_article.categories.any? %>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <% @featured_article.categories.first(2).each do |category| %>
+                  <%= link_to category.name, category_path(category), 
+                             class: "px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full hover:bg-blue-200 transition" %>
+                <% end %>
+              </div>
+            <% end %>
+            
+            <h2 class="text-3xl font-bold text-gray-900 tracking-tight">
+              <%= link_to @featured_article.title, article_path(@featured_article.slug), class: "hover:text-blue-600" %>
+            </h2>
+            
+            <p class="mt-4 text-lg text-gray-600">
+              <%= @featured_article.meta_description %>
+            </p>
+            
+            <div class="mt-6 flex items-center">
+              <div class="flex-shrink-0">
+                <% if @featured_article.author_avatar.attached? %>
+                  <%= image_tag @featured_article.author_avatar.variant(resize_to_fill: [40, 40]), 
+                               class: "h-10 w-10 rounded-full", 
+                               alt: @featured_article.author %>
+                <% else %>
+                  <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <span class="text-blue-800 font-medium text-sm">
+                      <%= @featured_article.author.to_s[0]&.upcase %>
+                    </span>
+                  </div>
+                <% end %>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm font-medium text-gray-900"><%= @featured_article.author %></p>
+                <div class="flex space-x-1 text-sm text-gray-500">
+                  <time datetime="<%= @featured_article.published_at.iso8601 %>">
+                    <%= @featured_article.published_at.strftime("%B %d, %Y") %>
+                  </time>
+                  <span aria-hidden="true">&middot;</span>
+                  <span><%= @featured_article.reading_time || "5 min read" %></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-6">
+              <%= link_to "Read Full Article", article_path(@featured_article.slug), 
+                         class: "inline-flex items-center px-5 py-2.5 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <% @articles.each do |article| %>
+      <div class="bg-white rounded-xl shadow-md overflow-hidden flex flex-col h-full hover:shadow-lg transition duration-300">
+        <% if article.featured_image.attached? %>
+          <div class="aspect-w-16 aspect-h-9">
+            <%= link_to article_path(article.slug) do %>
+              <%= image_tag article.featured_image.variant(resize_to_limit: [600, 400]), 
+                           class: "w-full h-full object-cover", 
+                           alt: article.title %>
+            <% end %>
+          </div>
+        <% end %>
+        
+        <div class="p-6 flex-1 flex flex-col">
+          <% if article.categories.any? %>
+            <div class="flex flex-wrap gap-2 mb-3">
+              <% article.categories.first(2).each do |category| %>
+                <%= link_to category.name, category_path(category), 
+                           class: "px-2 py-1 bg-blue-50 text-blue-700 text-xs font-medium rounded-full hover:bg-blue-100 transition" %>
+              <% end %>
+            </div>
+          <% end %>
+          
+          <h2 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+            <%= link_to article.title, article_path(article.slug), class: "hover:text-blue-600" %>
+          </h2>
+          
+          <p class="text-gray-600 mb-6 flex-1 line-clamp-3">
+            <%= article.meta_description %>
+          </p>
+          
+          <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+            <div class="flex items-center space-x-1 text-sm text-gray-500">
+              <time datetime="<%= article.published_at.iso8601 %>">
+                <%= article.published_at.strftime("%b %d, %Y") %>
+              </time>
+              <% if article.reading_time.present? %>
+                <span aria-hidden="true">&middot;</span>
+                <span><%= article.reading_time %></span>
+              <% end %>
+            </div>
+            
+            <%= link_to "Read", article_path(article.slug), 
+                       class: "text-sm font-medium text-blue-600 hover:text-blue-800" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="mt-12">
+    <%= paginate @articles, window: 2 %>
+  </div>
+  
+  <% unless @categories.nil? || @categories.empty? %>
+    <div class="mt-16 bg-white rounded-xl shadow-md p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Browse By Category</h2>
+      <div class="flex flex-wrap gap-3">
+        <% @categories.each do |category| %>
+          <%= link_to category_path(category), class: "px-4 py-2 bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition" do %>
+            <%= category.name %>
+            <span class="text-gray-500 text-sm ml-1">(<%= category.articles_count %>)</span>
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>
