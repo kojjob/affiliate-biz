@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   resources :conversions
   resources :clicks
   devise_for :users
-  get "home/index"
   root "home#index"
 
   resources :products, only: [ :index, :show ]
@@ -10,19 +9,6 @@ Rails.application.routes.draw do
   resources :categories, only: [ :index, :show ]
 
   namespace :admin do
-    get "articles/index"
-    get "articles/new"
-    get "articles/create"
-    get "articles/edit"
-    get "articles/update"
-    get "articles/destroy"
-    get "products/index"
-    get "products/new"
-    get "products/create"
-    get "products/edit"
-    get "products/update"
-    get "products/destroy"
-    get "dashboard/index"
     resources :products
     resources :articles
     resources :categories
@@ -31,6 +17,8 @@ Rails.application.routes.draw do
   # Affiliate link tracking
   get "/go/:id", to: "affiliate_links#redirect", as: :affiliate_redirect
 
+  # Static Pages
+  get "/about", to: "static#about", as: :about
 
   # PWA manifest
   # get '/manifest.json', to: 'pwa#manifest', as: :pwa_manifest
