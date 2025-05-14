@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :conversions
+  resources :clicks
   devise_for :users
   get "home/index"
   root "home#index"

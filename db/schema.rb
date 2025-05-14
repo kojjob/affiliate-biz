@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_235054) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_235845) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -86,6 +86,26 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_235054) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "clicks", force: :cascade do |t|
+    t.integer "affiliate_link_id", null: false
+    t.string "ip_hash"
+    t.string "referrer"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["affiliate_link_id"], name: "index_clicks_on_affiliate_link_id"
+  end
+
+  create_table "conversions", force: :cascade do |t|
+    t.integer "affiliate_link_id", null: false
+    t.integer "click_id", null: false
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["affiliate_link_id"], name: "index_conversions_on_affiliate_link_id"
+    t.index ["click_id"], name: "index_conversions_on_click_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -170,6 +190,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_235054) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "article_products", "articles"
   add_foreign_key "article_products", "products"
+  add_foreign_key "clicks", "affiliate_links"
+  add_foreign_key "conversions", "affiliate_links"
+  add_foreign_key "conversions", "clicks"
   add_foreign_key "order_items", "orders"
   add_foreign_key "product_categories", "categories"
   add_foreign_key "product_categories", "products"
