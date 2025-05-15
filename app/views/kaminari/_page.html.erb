@@ -1,0 +1,9 @@
+<li class="page<%= ' current' if page.current? %>">
+  <%= link_to page, url, {
+    remote: remote,
+    rel: page.rel,
+    class: page.current? ? 
+      "px-3 py-2 bg-blue-600 text-white rounded" :
+      "px-3 py-2 bg-white text-blue-600 rounded hover:bg-blue-100"
+  } %>
+</li>

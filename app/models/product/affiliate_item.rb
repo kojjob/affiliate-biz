@@ -1,12 +1,16 @@
-module Product
-  class AffiliateItem < Item
-    has_many :affiliate_links, class_name: "Marketing::AffiliateLink", foreign_key: "product_id"
-    
-    validates :external_url, presence: true
-    
-    def generate_affiliate_link
-      # Logic to generate properly formatted affiliate link
-      "\#{external_url}?ref=\#{tracking_code}"
-    end
+class Product
+  def self.AffiliateItem
+    Product.where.not(external_url: nil)
+  end
+
+  def generate_affiliate_link
+    return nil unless tracking_code.present? && external_url.present?
+
+    uri = URI.parse(external_url)
+    params = URI.decode_www_form(uri.query || "").to_h
+    params["ref"] = tracking_code
+
+    uri.query = URI.encode_www_form(params)
+    uri.to_s
   end
 end

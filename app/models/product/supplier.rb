@@ -1,9 +1,9 @@
-module Product
-  class Supplier < ApplicationRecord
-    has_many :dropship_items, class_name: "Product::DropshipItem", foreign_key: "supplier_id"
-    has_many :inventories, class_name: "Product::Inventory"
-    
-    validates :name, presence: true
-    validates :api_key, presence: true, if: -> { api_url.present? }
-  end
+class Supplier < ApplicationRecord
+  # Associations
+  has_many :products, class_name: "Product", foreign_key: "supplier_id", dependent: :nullify
+
+  # Validations
+  validates :name, presence: true
+  validates :api_key, presence: true, uniqueness: true, allow_blank: true
+  validates :api_url, presence: true, allow_blank: true
 end
