@@ -10,13 +10,42 @@
   }
 }
 
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
 /* Initially hide elements that will be animated */
 [data-about-page-target="valueCard"],
-[data-about-page-target="teamMember"] {
+[data-about-page-target="teamMember"],
+[data-about-page-target="timelineItem"],
+[data-about-page-target="partners"] {
   opacity: 0;
 }
 
@@ -30,10 +59,45 @@
   transition: all 0.3s ease;
 }
 
+/* Timeline styles */
+.timeline-marker {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hide scrollbar for testimonial slider */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
 /* Responsive adjustments */
 @media (max-width: 640px) {
   .about-page-section {
     padding-top: 2rem;
     padding-bottom: 2rem;
+  }
+
+  /* Adjust timeline for mobile */
+  .timeline-item {
+    flex-direction: column;
+  }
+
+  .timeline-item > div {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 0 !important;
+  }
+
+  .timeline-marker {
+    margin: 1rem 0;
+  }
+
+  .absolute.left-1/2 {
+    left: 1rem;
   }
 }
