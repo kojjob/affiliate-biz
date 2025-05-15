@@ -1,0 +1,209 @@
+<% content_for :title, "About Us | Affiliate Biz" %>
+<% content_for :meta_description, "Learn about Affiliate Biz - our mission, values, team, and journey to becoming the leading affiliate marketing platform." %>
+
+<div data-controller="about-page" class="bg-gradient-to-b from-indigo-50 to-white">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden pb-12 pt-32 sm:pb-16 sm:pt-40">
+    <div class="absolute inset-0 bg-[url('/hero-pattern.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="relative z-10 mx-auto max-w-2xl text-center">
+        <h1 class="animate-fade-in bg-gradient-to-r from-indigo-600 via-purple-500 to-pink-500 bg-clip-text text-4xl font-bold tracking-tight text-transparent sm:text-6xl">
+          Our Story
+        </h1>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Discover how we're revolutionizing affiliate marketing with transparency, quality products, and innovative technology.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission Section -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 items-center">
+        <div>
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Mission</h2>
+          <p class="mt-6 text-lg leading-8 text-gray-600">
+            At Affiliate Biz, we're on a mission to transform the affiliate marketing landscape by creating a platform that benefits everyone involved - from content creators to consumers.
+          </p>
+          <p class="mt-4 text-lg leading-8 text-gray-600">
+            We believe in the power of honest recommendations, quality products, and fair compensation for creators who help connect consumers with products they'll love.
+          </p>
+          <div class="mt-10 flex items-center gap-x-6">
+            <a href="#values" class="text-sm font-semibold leading-6 text-indigo-600" data-action="click->about-page#scrollToSection" data-section="values">
+              Our Values <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="<%= asset_path('mission.jpg') %>" alt="Our mission visualization" class="w-full rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[57rem]" onerror="this.onerror=null; this.src='/api/placeholder/600/400?text=Our+Mission'; this.alt='Our mission';">
+          <div class="absolute -top-4 -left-4 w-72 h-72 bg-indigo-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+          <div class="absolute -bottom-4 -right-4 w-72 h-72 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section id="values" class="py-16 sm:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:text-center">
+        <h2 class="text-base font-semibold leading-7 text-indigo-600">Our Foundation</h2>
+        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Values That Drive Us</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          These core principles guide everything we do, from product selection to platform development.
+        </p>
+      </div>
+      <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+          <div class="flex flex-col" data-about-page-target="valueCard">
+            <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+              <svg class="h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Transparency
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">
+                We believe in complete transparency in all our operations. From commission structures to product reviews, we ensure everything is clear and honest.
+              </p>
+            </dd>
+          </div>
+          <div class="flex flex-col" data-about-page-target="valueCard">
+            <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+              <svg class="h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Quality
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">
+                We rigorously vet all products on our platform to ensure they meet our high standards. We only promote products we believe in and would use ourselves.
+              </p>
+            </dd>
+          </div>
+          <div class="flex flex-col" data-about-page-target="valueCard">
+            <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-gray-900">
+              <svg class="h-5 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Innovation
+            </dt>
+            <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+              <p class="flex-auto">
+                We're constantly pushing the boundaries of what's possible in affiliate marketing, developing new tools and features to help our partners succeed.
+              </p>
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:mx-0">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Our Team</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Meet the passionate individuals behind Affiliate Biz who are dedicated to revolutionizing the affiliate marketing industry.
+        </p>
+      </div>
+      <ul role="list" class="mx-auto mt-20 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <li class="group" data-about-page-target="teamMember">
+          <div class="relative overflow-hidden rounded-2xl bg-gray-100 transform transition duration-500 group-hover:scale-105">
+            <img class="aspect-[3/2] w-full object-cover" src="<%= asset_path('team-1.jpg') %>" alt="Team member" onerror="this.onerror=null; this.src='/api/placeholder/300/200?text=CEO'; this.alt='CEO';">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-sm">
+                "I founded Affiliate Biz to create a platform that truly values content creators and helps consumers find products they'll love."
+              </p>
+            </div>
+          </div>
+          <h3 class="mt-6 text-lg font-semibold leading-8 text-gray-900">Sarah Johnson</h3>
+          <p class="text-base leading-7 text-gray-600">CEO & Founder</p>
+        </li>
+        <li class="group" data-about-page-target="teamMember">
+          <div class="relative overflow-hidden rounded-2xl bg-gray-100 transform transition duration-500 group-hover:scale-105">
+            <img class="aspect-[3/2] w-full object-cover" src="<%= asset_path('team-2.jpg') %>" alt="Team member" onerror="this.onerror=null; this.src='/api/placeholder/300/200?text=CTO'; this.alt='CTO';">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-sm">
+                "Our technology is built to provide the most transparent and effective affiliate marketing platform in the industry."
+              </p>
+            </div>
+          </div>
+          <h3 class="mt-6 text-lg font-semibold leading-8 text-gray-900">Michael Chen</h3>
+          <p class="text-base leading-7 text-gray-600">CTO</p>
+        </li>
+        <li class="group" data-about-page-target="teamMember">
+          <div class="relative overflow-hidden rounded-2xl bg-gray-100 transform transition duration-500 group-hover:scale-105">
+            <img class="aspect-[3/2] w-full object-cover" src="<%= asset_path('team-3.jpg') %>" alt="Team member" onerror="this.onerror=null; this.src='/api/placeholder/300/200?text=COO'; this.alt='COO';">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <p class="text-sm">
+                "We're building relationships with the best brands to bring quality products to our platform and our users."
+              </p>
+            </div>
+          </div>
+          <h3 class="mt-6 text-lg font-semibold leading-8 text-gray-900">Jessica Rodriguez</h3>
+          <p class="text-base leading-7 text-gray-600">COO</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 sm:py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl lg:max-w-none">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Trusted by content creators worldwide
+          </h2>
+          <p class="mt-4 text-lg leading-8 text-gray-600">
+            We're proud of the impact we've made in the affiliate marketing industry.
+          </p>
+        </div>
+        <dl class="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4" data-about-page-target="stats">
+          <div class="flex flex-col bg-gray-50 p-8 transition-all duration-500 hover:bg-gray-100">
+            <dt class="text-sm font-semibold leading-6 text-gray-600">Active Affiliates</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900" data-about-page-target="statValue" data-value="5000">0</dd>
+          </div>
+          <div class="flex flex-col bg-gray-50 p-8 transition-all duration-500 hover:bg-gray-100">
+            <dt class="text-sm font-semibold leading-6 text-gray-600">Products</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900" data-about-page-target="statValue" data-value="10000">0</dd>
+          </div>
+          <div class="flex flex-col bg-gray-50 p-8 transition-all duration-500 hover:bg-gray-100">
+            <dt class="text-sm font-semibold leading-6 text-gray-600">Monthly Visitors</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900" data-about-page-target="statValue" data-value="2500000">0</dd>
+          </div>
+          <div class="flex flex-col bg-gray-50 p-8 transition-all duration-500 hover:bg-gray-100">
+            <dt class="text-sm font-semibold leading-6 text-gray-600">Commissions Paid</dt>
+            <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900">$<span data-about-page-target="statValue" data-value="15000000">0</span></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Ready to join our community?</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">
+          Whether you're a content creator looking to monetize your platform or a consumer seeking honest product recommendations, we're here to help.
+        </p>
+        <div class="mt-10 flex items-center justify-center gap-x-6">
+          <a href="/users/sign_up" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Sign up now
+          </a>
+          <a href="/products" class="text-sm font-semibold leading-6 text-gray-900">
+            Browse products <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

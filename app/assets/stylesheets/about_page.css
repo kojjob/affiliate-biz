@@ -1,0 +1,39 @@
+/* About page animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Initially hide elements that will be animated */
+[data-about-page-target="valueCard"],
+[data-about-page-target="teamMember"] {
+  opacity: 0;
+}
+
+/* Team member hover effects */
+[data-about-page-target="teamMember"] .group:hover img {
+  transform: scale(1.05);
+}
+
+/* Stats counter animation */
+[data-about-page-target="statValue"] {
+  transition: all 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .about-page-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
