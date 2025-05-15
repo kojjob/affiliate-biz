@@ -68,7 +68,7 @@ gem "rspec-rails", "~> 8.0", groups: [ :development, :test ]
 gem "factory_bot_rails", "~> 6.4", groups: [ :development, :test ]
 gem "faker", "~> 3.5", groups: [ :development, :test ]
 
-gem "view_component", "~> 3.21"
+gem "view_component", "~> 3.22"
 gem "jsonapi-serializer", "~> 2.2"
 gem "aasm", "~> 5.5"
 
