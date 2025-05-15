@@ -1,8 +1,8 @@
 module Content
   class Article < ApplicationRecord
-    self.table_name = 'articles'
+    self.table_name = "articles"
 
-    belongs_to :author, class_name: 'User', optional: true
+    belongs_to :author, class_name: "User", optional: true
     has_many :article_products
     has_many :products, through: :article_products
 

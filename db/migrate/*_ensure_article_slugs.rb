@@ -3,9 +3,9 @@ class EnsureArticleSlugs < ActiveRecord::Migration[8.0]
     unless index_exists?(:articles, :slug)
       add_index :articles, :slug, unique: true
     end
-    
+
     execute <<-SQL
-      UPDATE articles 
+      UPDATE articles#{' '}
       SET slug = LOWER(
         REPLACE(
           REPLACE(title, ' ', '-'),

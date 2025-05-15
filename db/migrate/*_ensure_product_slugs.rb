@@ -4,10 +4,10 @@ class EnsureProductSlugs < ActiveRecord::Migration[8.0]
     unless index_exists?(:products, :slug)
       add_index :products, :slug, unique: true
     end
-    
+
     # Generate slugs for products without them
     execute <<-SQL
-      UPDATE products 
+      UPDATE products#{' '}
       SET slug = LOWER(
         REPLACE(
           REPLACE(name, ' ', '-'),

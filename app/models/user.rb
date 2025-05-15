@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :terms_accepted, acceptance: { accept: true, message: 'must be accepted' }
+  validates :terms_accepted, acceptance: { accept: true, message: "must be accepted" }
 end
