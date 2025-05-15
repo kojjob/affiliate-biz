@@ -2,11 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "conversions/show", type: :view do
   before(:each) do
-    assign(:conversion, Conversion.create!(
-      affiliate_link: nil,
-      click: nil,
-      amount: "9.99"
-    ))
+    conversion = Conversion.new(amount: "9.99")
+    allow(conversion).to receive(:id).and_return(1)
+    allow(conversion).to receive(:affiliate_link).and_return(nil)
+    allow(conversion).to receive(:click).and_return(nil)
+
+    assign(:conversion, conversion)
   end
 
   it "renders attributes in <p>" do

@@ -2,11 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "conversions/new", type: :view do
   before(:each) do
-    assign(:conversion, Conversion.new(
-      affiliate_link: nil,
-      click: nil,
-      amount: "9.99"
-    ))
+    # Create a stub affiliate link
+    @affiliate_link = double(Marketing::AffiliateLink, id: 1, destination_url: "https://example.com")
+    allow(Marketing::AffiliateLink).to receive(:all).and_return([ @affiliate_link ])
+
+    # Create a stub click
+    @click = double(Click, id: 1, ip_hash: "MyString")
+    allow(Click).to receive(:all).and_return([ @click ])
+
+    assign(:conversion, Conversion.new(amount: "9.99"))
   end
 
   it "renders new conversion form" do

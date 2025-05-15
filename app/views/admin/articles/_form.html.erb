@@ -1,0 +1,115 @@
+<%= form_with(model: [:admin, article], url: article.new_record? ? admin_articles_path : admin_article_path(article), local: true, class: "space-y-6") do |form| %>
+  <% if article.errors.any? %>
+    <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">There <%= article.errors.count == 1 ? 'is' : 'are' %> <%= pluralize(article.errors.count, "error") %> with this article:</h3>
+          <div class="mt-2 text-sm text-red-700">
+            <ul class="list-disc pl-5 space-y-1">
+              <% article.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Basic Info -->
+  <div>
+    <h3 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h3>
+    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+      <div class="sm:col-span-4">
+        <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= form.text_field :title, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+      </div>
+
+      <div class="sm:col-span-2">
+        <%= form.label :slug, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= form.text_field :slug, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+        <p class="mt-2 text-sm text-gray-500">Leave blank to auto-generate from title</p>
+      </div>
+
+      <div class="sm:col-span-6">
+        <%= form.label :content, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= form.text_area :content, rows: 10, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO -->
+  <div class="pt-6 border-t border-gray-200">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">SEO</h3>
+    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+      <div class="sm:col-span-6">
+        <%= form.label :meta_title, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= form.text_field :meta_title, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+      </div>
+
+      <div class="sm:col-span-6">
+        <%= form.label :meta_description, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= form.text_area :meta_description, rows: 3, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publishing -->
+  <div class="pt-6 border-t border-gray-200">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">Publishing</h3>
+    <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+      <div class="sm:col-span-2">
+        <div class="flex items-start">
+          <div class="flex items-center h-5">
+            <%= form.check_box :published, class: "focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" %>
+          </div>
+          <div class="ml-3 text-sm">
+            <%= form.label :published, class: "font-medium text-gray-700" %>
+            <p class="text-gray-500">Make this article visible to the public</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm:col-span-2">
+        <div class="flex items-start">
+          <div class="flex items-center h-5">
+            <%= form.check_box :featured, class: "focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded" %>
+          </div>
+          <div class="ml-3 text-sm">
+            <%= form.label :featured, class: "font-medium text-gray-700" %>
+            <p class="text-gray-500">Feature this article on the homepage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sm:col-span-2">
+        <%= form.label :featured_position, class: "block text-sm font-medium text-gray-700" %>
+        <div class="mt-1">
+          <%= form.number_field :featured_position, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+        </div>
+        <p class="mt-2 text-sm text-gray-500">Lower numbers appear first</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="pt-6 border-t border-gray-200 flex justify-end">
+    <%= link_to "Cancel", admin_articles_path, class: "bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-3" %>
+    <%= form.submit class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  </div>
+<% end %>

@@ -1,6 +1,7 @@
-<!-- app/views/admin/products/_form.html.erb -->
+<% content_for :title, "Product Form" %>
+
 <div class="product-form bg-white shadow-sm rounded-lg p-6">
-  <%= form_with(model: [:admin, product], local: true, class: "space-y-6") do |form| %>
+  <%= form_with(model: [:admin, product], url: product.new_record? ? admin_products_path : admin_product_path(product), local: true, class: "space-y-6") do |form| %>
     <% if product.errors.any? %>
       <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
         <div class="flex">
@@ -22,7 +23,7 @@
         </div>
       </div>
     <% end %>
-  
+
     <!-- Basic Info -->
     <div>
       <h3 class="text-lg font-medium text-gray-900 mb-4">Basic Information</h3>
@@ -33,14 +34,14 @@
             <%= form.text_field :name, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-2">
           <%= form.label :product_type, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
             <%= form.select :product_type, [["Affiliate Product", "Product::AffiliateItem"], ["Dropship Product", "Product::DropshipItem"]], {}, { class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" } %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-6">
           <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
@@ -50,7 +51,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Price & Inventory -->
     <div class="pt-6 border-t border-gray-200">
       <h3 class="text-lg font-medium text-gray-900 mb-4">Pricing & Inventory</h3>
@@ -64,14 +65,14 @@
             <%= form.text_field :price, class: "focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md", placeholder: "0.00" %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-2">
           <%= form.label :sku, "SKU", class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
             <%= form.text_field :sku, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-2">
           <%= form.label :slug, class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
@@ -81,9 +82,9 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Affiliate Specific Fields -->
-    <div class="pt-6 border-t border-gray-200" id="affiliate-fields" style="<%= product.is_a?(Product::AffiliateItem) ? '' : 'display: none;' %>">
+    <div class="pt-6 border-t border-gray-200" id="affiliate-fields" style="<%= product.external_url.present? ? '' : 'display: none;' %>">
       <h3 class="text-lg font-medium text-gray-900 mb-4">Affiliate Details</h3>
       <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
         <div class="sm:col-span-4">
@@ -92,7 +93,7 @@
             <%= form.url_field :external_url, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-2">
           <%= form.label :commission_rate, "Commission Rate (%)", class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
@@ -101,18 +102,18 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Dropship Specific Fields -->
-    <div class="pt-6 border-t border-gray-200" id="dropship-fields" style="<%= product.is_a?(Product::DropshipItem) ? '' : 'display: none;' %>">
+    <div class="pt-6 border-t border-gray-200" id="dropship-fields" style="<%= product.supplier_cost.present? ? '' : 'display: none;' %>">
       <h3 class="text-lg font-medium text-gray-900 mb-4">Dropshipping Details</h3>
       <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
         <div class="sm:col-span-3">
           <%= form.label :supplier_id, "Supplier", class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1">
-            <%= form.collection_select :supplier_id, Product::Supplier.all, :id, :name, { include_blank: "Select a supplier" }, { class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" } %>
+            <%= form.collection_select :supplier_id, Supplier.all, :id, :name, { include_blank: "Select a supplier" }, { class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" } rescue form.select :supplier_id, [], { include_blank: "No suppliers available" }, { class: "mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md" } %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-3">
           <%= form.label :supplier_cost, "Supplier Cost", class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1 relative rounded-md shadow-sm">
@@ -122,7 +123,7 @@
             <%= form.text_field :supplier_cost, class: "focus:ring-blue-500 focus:border-blue-500 block w-full pl-7 sm:text-sm border-gray-300 rounded-md", placeholder: "0.00" %>
           </div>
         </div>
-        
+
         <div class="sm:col-span-3">
           <%= form.label :shipping_cost, "Shipping Cost", class: "block text-sm font-medium text-gray-700" %>
           <div class="mt-1 relative rounded-md shadow-sm">
@@ -134,7 +135,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Image Upload - Placeholder for future implementation -->
     <div class="pt-6 border-t border-gray-200">
       <h3 class="text-lg font-medium text-gray-900 mb-4">Images</h3>
@@ -154,7 +155,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Submit Button -->
     <div class="pt-6 border-t border-gray-200 flex justify-end">
       <%= link_to "Cancel", admin_products_path, class: "bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mr-3" %>
@@ -169,7 +170,7 @@
     const productTypeSelect = document.querySelector('select[name="product[product_type]"]');
     const affiliateFields = document.getElementById('affiliate-fields');
     const dropshipFields = document.getElementById('dropship-fields');
-    
+
     function toggleFields() {
       if (productTypeSelect.value === 'Product::AffiliateItem') {
         affiliateFields.style.display = 'block';
@@ -179,7 +180,7 @@
         dropshipFields.style.display = 'block';
       }
     }
-    
+
     productTypeSelect.addEventListener('change', toggleFields);
     toggleFields(); // Run once on load
   });

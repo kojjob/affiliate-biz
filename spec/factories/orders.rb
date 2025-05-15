@@ -10,6 +10,6 @@ FactoryBot.define do
     price { Faker::Commerce.price(range: 10..100) }
 
     association :order
-    association :product, factory: :dropship_item
+    association :product
   end
 end

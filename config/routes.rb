@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :categories, only: [ :index, :show ]
 
   namespace :admin do
+    get "/", to: "dashboard#index", as: :dashboard
+    get "/dashboard", to: "dashboard#index"
     resources :products
     resources :articles
     resources :categories

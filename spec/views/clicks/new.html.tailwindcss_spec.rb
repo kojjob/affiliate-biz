@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "clicks/new", type: :view do
   before(:each) do
+    # Create a stub affiliate link
+    @affiliate_link = double(Marketing::AffiliateLink, id: 1, destination_url: "https://example.com")
+    allow(Marketing::AffiliateLink).to receive(:all).and_return([ @affiliate_link ])
+
     assign(:click, Click.new(
-      affiliate_link: nil,
       ip_hash: "MyString",
       referrer: "MyString",
       user_agent: "MyString"

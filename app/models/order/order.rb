@@ -3,7 +3,7 @@ module Order
     include AASM
 
     has_many :order_items, class_name: "Order::OrderItem"
-    has_many :products, through: :order_items, class_name: "Product::Item"
+    has_many :products, through: :order_items, class_name: "Product"
 
     validates :customer_email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 

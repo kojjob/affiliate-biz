@@ -1,45 +1,63 @@
 require 'rails_helper'
 
 RSpec.describe "Admin::Articles", type: :request do
-  describe "GET /index" do
+  let(:article) { create(:article) }
+
+  describe "GET /admin/articles" do
     it "returns http success" do
-      get "/admin/articles/index"
+      get "/admin/articles"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /new" do
+  describe "GET /admin/articles/new" do
     it "returns http success" do
       get "/admin/articles/new"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /create" do
+  describe "POST /admin/articles" do
+    it "creates a new article" do
+      article_params = {
+        article: {
+          title: "Test Article",
+          content: "Test content",
+          published: true
+        }
+      }
+      expect {
+        post "/admin/articles", params: article_params
+      }.to change(Content::Article, :count).by(1)
+      expect(response).to redirect_to(admin_articles_path)
+    end
+  end
+
+  describe "GET /admin/articles/:id/edit" do
     it "returns http success" do
-      get "/admin/articles/create"
+      get "/admin/articles/#{article.id}/edit"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /edit" do
-    it "returns http success" do
-      get "/admin/articles/edit"
-      expect(response).to have_http_status(:success)
+  describe "PATCH /admin/articles/:id" do
+    it "updates the article" do
+      patch "/admin/articles/#{article.id}", params: {
+        article: { title: "Updated Title" }
+      }
+      expect(response).to redirect_to(admin_articles_path)
+      article.reload
+      expect(article.title).to eq("Updated Title")
     end
   end
 
-  describe "GET /update" do
-    it "returns http success" do
-      get "/admin/articles/update"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /destroy" do
-    it "returns http success" do
-      get "/admin/articles/destroy"
-      expect(response).to have_http_status(:success)
+  describe "DELETE /admin/articles/:id" do
+    it "destroys the article" do
+      article # Create the article
+      expect {
+        delete "/admin/articles/#{article.id}"
+      }.to change(Content::Article, :count).by(-1)
+      expect(response).to redirect_to(admin_articles_path)
     end
   end
 end

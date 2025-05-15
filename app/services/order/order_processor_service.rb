@@ -5,7 +5,7 @@ module Order
       Rails.logger.info "Processing order: \#{order.id} for \#{order.customer_email}"
 
       # Check inventory availability
-      dropship_items = order.order_items.map(&:product).select { |p| p.is_a?(Product::DropshipItem) }
+      dropship_items = order.order_items.map(&:product).select { |p| p.supplier_cost.present? }
 
       dropship_items.each do |item|
         unless item.in_stock?

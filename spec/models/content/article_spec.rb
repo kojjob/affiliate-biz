@@ -13,7 +13,7 @@ RSpec.describe Content::Article, type: :model do
 
   it "can have associated products" do
     article = create(:article)
-    product = create(:affiliate_item)
+    product = create(:product, external_url: "https://example.com")
     article.products << product
 
     expect(article.products.count).to eq(1)

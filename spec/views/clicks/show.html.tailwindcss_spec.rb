@@ -2,12 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "clicks/show", type: :view do
   before(:each) do
-    assign(:click, Click.create!(
-      affiliate_link: nil,
+    click = Click.new(
       ip_hash: "Ip Hash",
       referrer: "Referrer",
       user_agent: "User Agent"
-    ))
+    )
+    allow(click).to receive(:id).and_return(1)
+    allow(click).to receive(:affiliate_link).and_return(nil)
+
+    assign(:click, click)
   end
 
   it "renders attributes in <p>" do
